@@ -14,7 +14,7 @@ class DummyMaker:
         if prefix is None:
             self.prefix = ""
         else:
-            self.prefix = prefix + "_"
+            self.prefix = prefix + "__"
         self.colnames = None
 
     def fit(self, categorical_column):
@@ -24,7 +24,7 @@ class DummyMaker:
         """
         unique_cats = np.unique(categorical_column)
         self.levels = unique_cats
-        self.colnames = [self.prefix + level.replace(" ", "-")
+        self.colnames = [self.prefix + level.replace(" ", "_")
                          for level in self.levels]
 
     def transform(self, categorical_column, k_minus_one=False):
